@@ -1,0 +1,29 @@
+﻿@model FirstProject.Models.JoinedData
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditEmployee</title>
+</head>
+<body>
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+    <h1>Update Employee: </h1>
+    <div>
+        <form action="/employee/GetUpdatedEmpData" method="post">
+            @Html.HiddenFor(x => x.ID) <br />
+            First Name: @Html.EditorFor(x => x.FName) <br /> <br />
+            Last Name: @Html.EditorFor(x => x.LName) <br /> <br />
+            Start Work Year : @Html.EditorFor(x => x.SWY) <br /> <br />
+            Department: @Html.DropDownListFor(x => x.DepID, Model.departments, "Select Department")
+
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shifts</title>
+</head>
+<body>
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+
+    <h1>Employees Shifts Table</h1>
+
+    <div>
+        <table border="1">
+
+            <tr><th>Date</th><th>Start Time</th><th>End Time</th><th>Show Employees</th></tr>
+
+            @foreach (var shift in ViewBag.ShiftsData)
+            {
+
+                <tr>
+                    <td>@shift.ShiftDate</td>
+                    <td>@shift.StartTime</td>
+                    <td>@shift.EndTime</td>
+
+
+                    <td>@Html.ActionLink("Show Employees", "GetEmpForShift", new { shID = @shift.ShiftID })</td>
+
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</body>
+        </html>

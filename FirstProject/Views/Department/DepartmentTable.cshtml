@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DepartmentTable</title>
+</head>
+<body>
+
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+    <h1>Our Departments</h1>
+    <div>
+        <table border="1">
+            <tr><th>Department Name</th><th>Manager</th><th>Edit</th><th>Delete</th></tr>
+
+            @foreach (var dep in ViewBag.TableData)
+            {
+                <tr>
+                    <td>@dep.Name</td>
+                    <td>@dep.Manager</td>
+
+                    <td>@Html.ActionLink("Edit", "EditDepartment", new { depID = @dep.ID })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteDepartment", new { depID = @dep.ID })</td>
+                </tr>
+            }
+        </table>
+        <br />
+
+        <form action="/department/AddDepartment" method="post">
+            <button>Add Department</button>
+        </form>
+
+    </div>
+</body>
+</html>

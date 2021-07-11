@@ -1,0 +1,27 @@
+﻿
+@model FirstProject.Models.Department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddDepartment</title>
+</head>
+<body>
+    <div>
+
+        <h3>Hello @Session["userFullName"]</h3>
+        <a href="/login/Logout">Logout</a> <br /> <br />
+        <form action="/department/GetNewDepData" method="post">
+            Department Name: @Html.TextBoxFor(x => x.Name) <br /> <br />
+            Department Manager: @Html.TextBoxFor(x => x.Manager) <br /> <br />
+
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+</body>
+</html>

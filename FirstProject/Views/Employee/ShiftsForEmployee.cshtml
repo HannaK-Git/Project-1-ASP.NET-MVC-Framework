@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShiftsForEmployee</title>
+</head>
+<body>
+    <div>
+        <h3>Hello @Session["userFullName"]</h3>
+        <a href="/login/Logout">Logout</a> <br /> <br />
+        <h1>Shifts for @ViewBag.empName</h1>
+
+        @foreach (var shift in ViewBag.shiftsData)
+        {
+            <ol>
+                <li>Date of the shift: @shift.ShiftDate</li>
+                <li>Start Time: @shift.StartTime</li>
+                <li>End Time: @shift.EndTime</li>
+            </ol>
+        }
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmployeesForShift</title>
+</head>
+<body>
+    <div>
+        <h3>Hello @Session["userFullName"]</h3>
+        <a href="/login/Logout">Logout</a> <br /> <br />
+        <h1>List of Employees for the Shift</h1>
+
+        @foreach (var emp in ViewBag.empData)
+        {
+            <ul>
+                <li><a href="@Url.Action( "EditEmployee", "Shift", new { empid = emp.ID })">@emp.FName </a></li>
+
+                <li style="list-style-type: none">@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { empID = @emp.ID })</li>
+            </ul>
+
+        }
+
+
+    </div>
+</body>
+</html>

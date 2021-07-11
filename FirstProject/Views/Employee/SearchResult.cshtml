@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SearchResult</title>
+</head>
+<body>
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+    <h1>Search Result:</h1>
+    <div>
+        <table border="1">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Start Work Year</th>
+                <th>Department Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            @foreach (var dep in ViewBag.empData)
+            {
+                <tr>
+                    <td>@dep.FName</td>
+                    <td>@dep.LName</td>
+                    <td>@dep.SWY</td>
+                    <td>@dep.Dep</td>
+                    <td>@dep.ShiftDate</td>
+                    <td>@dep.StartTime</td>
+                    <td>@dep.EndTime</td>
+
+
+
+                </tr>
+            }
+        </table>
+        <br />
+        <form action="/Employee/GetAllEmpInfo">
+            <button>Back to Search</button>
+        </form>
+    </div>
+</body>
+</html>

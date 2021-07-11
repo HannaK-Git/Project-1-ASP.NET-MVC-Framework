@@ -1,0 +1,30 @@
+﻿
+@model FirstProject.Models.EmployeeWithShifts
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddShiftToEmployee</title>
+</head>
+
+<body>
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+    <h1>Add Shift for @ViewBag.empName</h1>
+    <div>
+        <form action="/employee/GetNewShiftData" method="post">
+
+
+            @Html.HiddenFor(x => x.EmployeeID)
+            Shift: @Html.DropDownListFor(x => x.ShiftID, Model.shifts, "Select Shift");
+
+            <input type="submit" value="Add Shift" />
+        </form>
+    </div>
+</body>
+</html>

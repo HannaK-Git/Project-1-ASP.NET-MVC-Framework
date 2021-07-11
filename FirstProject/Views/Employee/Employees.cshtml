@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+</head>
+<body>
+    <h1>Information about Employees and Shifts</h1>
+    <div>
+        <h3>Hello @Session["userFullName"]</h3>
+        <a href="/login/Logout">Logout</a> <br /> <br />
+        <form action="/employee/SearchEmpoloyee" method="get">
+            Search: <input type="text" name="searchItem" />
+            <br />
+            <input type="submit" value="Search" />
+        </form> <br />
+        <table border="1">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Start Work Year</th>
+                <th>Department Name</th>
+                <th>Shifts</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Add Shift</th>
+
+            </tr>
+            @foreach (var dep in ViewBag.empData)
+            {
+                <tr>
+                    <td>@dep.FName</td>
+                    <td>@dep.LName</td>
+                    <td>@dep.SWY</td>
+                    <td>@dep.Dep</td>
+
+                    <td>@Html.ActionLink("Show Shifts", "GetShiftsForEmp", new { empID = @dep.ID, empName = @dep.FullName })</td>
+                    <td>@Html.ActionLink("Edit", "EditEmployee", new { empID = @dep.ID })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteEmployee", new { empID = @dep.ID })</td>
+                    <td>@Html.ActionLink("Add Shift", "AddShiftToEmployee", new { empID = @dep.ID })</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

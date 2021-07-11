@@ -1,0 +1,28 @@
+﻿
+@model FirstProject.Models.Department
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditDepartment</title>
+</head>
+<body>
+
+    <h3>Hello @Session["userFullName"]</h3>
+    <a href="/login/Logout">Logout</a> <br /> <br />
+    <h1>Edit new Department</h1>
+    <div>
+        <form action="/department/GetUpdatedDepData" method="post">
+            @Html.HiddenFor(x => x.ID) <br />
+            Name: @Html.EditorFor(x => x.Name) <br />
+            Manager: @Html.EditorFor(x => x.Manager) <br />
+            <input type="submit" value="Edit" />
+        </form>
+    </div>
+</body>
+</html>

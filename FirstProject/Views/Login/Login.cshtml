@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login Form: </h1>
+    <div>
+        <h3>@Session["numOfActions"]</h3>
+        <form action="/login/GetLoginData" method="post">
+
+
+            Enter User Name: <input type="text" name="username" /> <br /> <br />
+            Enter Password: <input type="text" name="pwd" /><br /> <br />
+
+            <input type="submit" value="Login" />
+
+            @if (ViewBag.errorMsg != null)
+            {
+                <div style="color: red">@ViewBag.errorMsg</div>
+            }
+        </form>
+    </div>
+</body>
+</html>
